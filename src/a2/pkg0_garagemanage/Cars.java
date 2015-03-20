@@ -9,7 +9,7 @@ public class Cars {
     
     String matricula, color, marca, modelo, tipo;
     int ocupCoche;
-    double time;
+    double time, total_time;
     
     public Cars(){
         String carArray[] = Methods.readCars();
@@ -83,7 +83,14 @@ public class Cars {
     public void setTipo(String tipo){
         this.tipo = tipo;
     }
-
+    
+    public void setTotalTime(){
+        this.total_time = (System.currentTimeMillis()/1000)-time;
+    }
+    public double getTotalTime(){
+        return total_time;
+    }
+    
     @Override
     public String toString() {
         return "Vehículo " + tipo + " con matrícula: " + matricula + ", " + marca + ", " + modelo + " de color: " + color + ", y " + ocupCoche + " ocupantes";
