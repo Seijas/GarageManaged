@@ -89,15 +89,18 @@ public class Methods {
         }
     }
     
-    public static boolean verifiedApproved(String cadena, Cars vehicle){
-        String posibilidades[] = cadena.split(",");
+    public static boolean canEnter(Cars vehicle, String[] dailyTask){
+        boolean canEnter = false;
         
-        for(int i=0; i<posibilidades.length; i++){
-            if(vehicle.toCompare().contains(posibilidades[i])){
-                return true;
+        int counter = 2;
+        while(canEnter==false && (counter<dailyTask.length)){
+            if(vehicle.toCompare().contains(dailyTask[counter])){
+                canEnter = true;
             }
+            counter++;
         }
-        return false;
+        
+        return canEnter;
     }
     
     public static int countLines(String nameFile){
