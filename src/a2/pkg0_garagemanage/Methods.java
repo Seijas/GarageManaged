@@ -90,17 +90,16 @@ public class Methods {
     }
     
     public static boolean canEnter(Cars vehicle, String[] dailyTask){
-        boolean canEnter = false;
         
-        int counter = 2;
-        while(canEnter==false && (counter<dailyTask.length)){
-            if(vehicle.toCompare().contains(dailyTask[counter])){
-                canEnter = true;
+        for(int counter=2; counter<dailyTask.length; counter++){
+            String [] tasks = dailyTask[counter].split(",");
+            for(int i=0; i<tasks.length; i++){
+                if(vehicle.toCompare().contains(tasks[i])){
+                    return true;
+                }
             }
-            counter++;
         }
-        
-        return canEnter;
+        return false;
     }
     
     public static int countLines(String nameFile){
