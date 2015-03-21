@@ -10,6 +10,7 @@ public class Cars {
     String matricula, color, marca, modelo, tipo;
     int ocupCoche;
     double time, total_time;
+    float dailyRate;
     
     public Cars(){
         String carArray[] = Methods.readCars();
@@ -82,6 +83,13 @@ public class Cars {
     }
     public void setTipo(String tipo){
         this.tipo = tipo;
+    }
+    
+    public void setDailyRate(float rate){
+        dailyRate = rate;
+    }
+    public float getDailyRate(){
+        return dailyRate;
     }
     
     public void setTotalTime(){
