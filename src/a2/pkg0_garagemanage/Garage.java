@@ -1,6 +1,7 @@
 package a2.pkg0_garagemanage;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -83,29 +84,29 @@ public class Garage {
     
     public void startGame(){
         
+        int fail;
+        double start_time;
         boolean stop = false;
         boolean brokeTime = false;
         boolean modifier = false;
         
         do{
-            double start_time = (System.currentTimeMillis()/1000);
+            start_time = (System.currentTimeMillis()/1000);
+            
             //leer desde fichero tarea diaria
             String dailyTask[] = Methods.readDailyTasks();
             
             JOptionPane.showMessageDialog(null, Methods.formatText(dailyTask[1]));
-            int fail = 0;
+            fail = 0;
+            
             do{
+                Methods.take_out_car(cars);
+                
                 //generacion de coches
                 Cars vehicle = new Cars();
                 
                 int counter = 2;
-                boolean canEnter = false;
-                while(canEnter==false && (counter<dailyTask.length)){
-                    if(Methods.verifiedApproved(dailyTask[counter], vehicle)){
-                        canEnter = true;
-                    }
-                    counter++;
-                }
+                boolean canEnter = Methods.canEnter(vehicle, dailyTask);
                 //entrada de coches mientras tiempo
                 do{
                     int optionUser = JOptionPane.showOptionDialog(null, vehicle.toEntered(), vehicle.getMatricula(), JOptionPane.YES_NO_OPTION, 
@@ -117,8 +118,9 @@ public class Garage {
                             //admitir vehiculo
                             if(canEnter == false){
                                 fail++;
+                                System.out.println("El vehiculo no deberia haber entrado");
                             }
-                            if(cars.size()>this.size){
+                            if(cars.size()>=this.size){
                                 JOptionPane.showMessageDialog(null, "El vehículo pasa la barrera, da varias vueltas al garage \ny comprueba que no hay ni una sola plaza "
                                         + "de aparcamiento sin ocupar, \nvuelve hacia su garita y toma represalias contra usted. \nSu jefe tendrá en cuenta este descuido");
                                 fail++;
@@ -131,9 +133,12 @@ public class Garage {
                         
                         case 1:
                             //rechazar vehiculo
-                            if(canEnter && (cars.size()>(this.size/2))){
-                                JOptionPane.showMessageDialog(null, "El vehiculo se disponia a entrar, pero le deniegas la entrada, \nte mira con cara amenazadora y te pregunta porque, 'el garage estñá vacio' afirma");
+                            if(cars.size()>(this.size/2)){
+                                JOptionPane.showMessageDialog(null, "El vehiculo se disponia a entrar, pero le deniegas la entrada, \nte mira con cara amenazadora y te pregunta porqué, 'el garage está vacio' afirma");
                                 fail++;
+                            }
+                            if(canEnter){
+                                System.out.println("El coche podia entrar");
                             }
                             modifier = true;
                             break;
@@ -161,7 +166,7 @@ public class Garage {
                     }
                 }while(modifier==false);
                 
-            }while(((System.currentTimeMillis()/1000) >= (start_time*1*60)) || brokeTime == false);
+            }while(((System.currentTimeMillis()/1000) >= (start_time*1*60)) || (brokeTime == false));
             
             //calculo de beneficios
             
@@ -169,8 +174,12 @@ public class Garage {
             //continuar o salir??
             
         }while(stop == false);
+        //se guard todo o no se gurda nada
         
         //guardar partida o no
+        
+        //borrado arraylist
+        cars.clear();
     }
     
     
