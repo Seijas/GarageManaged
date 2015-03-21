@@ -19,7 +19,7 @@ public class A20_GarageManage {
         String userName = JOptionPane.showInputDialog("Introduzca un nombre de usuario");
         String garageName = JOptionPane.showInputDialog("Introduzca el nombre de su garaje");
         
-        if(userName == null || "".equals(garageName)){
+        if(userName == null || "".equals(userName)){
             userName = "Sujeto de pruebas";
         }
         if(garageName == null || "".equals(garageName)){
