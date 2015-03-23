@@ -1,7 +1,6 @@
 package a2.pkg0_garagemanage;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -87,12 +86,12 @@ public class Garage {
         int fail;
         double start_time;
         boolean stop = false;
-        boolean brokeTime = false;
+        boolean brokeTime = true;
         boolean modifier = false;
         
         do{
             start_time = (System.currentTimeMillis()/1000);
-            
+                        
             //leer desde fichero tarea diaria
             String dailyTask[] = Methods.readDailyTasks();
             
@@ -159,14 +158,14 @@ public class Garage {
                         
                         default:
                             JOptionPane.showMessageDialog(null, "Misión abortada \nAbandonas tu puesto de trabajo y los clientes saltan la barrera sin pagar, \nel jefe se da cuenta de la situación y te despide");
-                            brokeTime = true;
+                            brokeTime = false;
                             modifier = true;
                             stop = true;
                             break;
                     }
                 }while(modifier==false);
                 
-            }while(((System.currentTimeMillis()/1000) >= (start_time*1*60)) || (brokeTime == false));
+            }while(((start_time+60) > (System.currentTimeMillis()/1000)) && (brokeTime));
             
             //calculo de beneficios
             
