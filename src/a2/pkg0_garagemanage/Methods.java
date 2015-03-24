@@ -266,36 +266,18 @@ public class Methods {
         return values;
     }
     
-    public static ArrayList <Cars> take_out_car(ArrayList <Cars> cars){
-        
-        int size = cars.size();
-        if(size == 0){
-            return cars;
-        }
-        
-        int number_of_car = Aleatory.number(0, 15);
-        if(number_of_car<7){
-            //no sale coche
-        }else{
-            //sale coche
-            Cars carOne= cars.remove(Aleatory.number(0, size));
-            carOne.setTotalTime();
-            
-            if(size == 1){
-                //sale un coche
-                return cars;
-            }
-            
-            if(number_of_car<12){
-                //sale un coche
-            }else{
-                //salen 2 coche
-                Cars carTwo = cars.remove(Aleatory.number(0, size));
-                carTwo.setTotalTime();
-            }
-        }
-        return cars;
-    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
