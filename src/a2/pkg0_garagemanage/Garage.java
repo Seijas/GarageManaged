@@ -105,7 +105,6 @@ public class Garage {
                 //generacion de coches
                 Cars vehicle = new Cars();
                 
-                int counter = 2;
                 boolean canEnter = Methods.canEnter(vehicle, dailyTask);
                 //entrada de coches mientras tiempo
                 do{
@@ -208,11 +207,11 @@ public class Garage {
         ticket.add(new Ticket(carTwo));
     }
     
-    public float recopilateTickets(){
-        float totalPaied = 0;
+    public double recopilateTickets(){
+        double totalPaied = 0;
         
         for(int i=0; i<ticket.size(); i++){
-            totalPaied = totalPaied + ticket.get(i).getPaid();
+            totalPaied = totalPaied + ticket.get(i).getPaid(rate);
         }
         
         return totalPaied;

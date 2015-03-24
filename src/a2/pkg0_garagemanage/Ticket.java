@@ -17,6 +17,7 @@ public class Ticket {
     }
     public Ticket(Cars vehicle){
         this.vehicle = vehicle;
+        totalTime = vehicle.getTotalTime();
     }
     
     public void setRate(float rate){
@@ -33,13 +34,14 @@ public class Ticket {
         return totalTime;
     }
     
-    public float getPaid(){
-        return (float) (totalTime*vehicle.getDailyRate());
+    public double getPaid(float rate){
+        this.rate = rate;
+        return totalTime*rate;
     }
     
     @Override
     public String toString(){
-        return "El vehiculo con matricula " + vehicle.getMatricula() + " abandona el garage pagando satisfactoriamente " + getPaid() + " por su estancia de " + vehicle.getTotalTime();
+        return "El vehiculo con matricula " + vehicle.getMatricula() + " abandona el garage pagando satisfactoriamente " + getPaid(rate) + " por su estancia de " + vehicle.getTotalTime();
     }
     
     

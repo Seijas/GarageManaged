@@ -147,8 +147,9 @@ public class Cars {
     }
     
     /**
-     *
-     * @return String con todos los parametros sparados por coma
+     * Metodo toCampore()
+     * utilizado en Methods.canEnter()
+     * @return String con todos los parametros separados por coma
      */
     public String toCompare(){
         return matricula + ", " + color + ", " + marca + ", " + modelo + ", " + ocupCoche + ", " + time + ", " + tipo + ", todos";
