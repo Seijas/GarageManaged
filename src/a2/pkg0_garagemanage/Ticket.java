@@ -34,7 +34,7 @@ public class Ticket {
     }
     
     public float getPaid(){
-        return (float) (totalTime*rate);
+        return (float) (totalTime*vehicle.getDailyRate());
     }
     
     @Override
