@@ -99,7 +99,7 @@ public class Garage {
             fail = 0;
             
             do{
-                Methods.take_out_car(cars);
+                this.take_out_car();
                 
                 //generacion de coches
                 Cars vehicle = new Cars();
@@ -181,7 +181,29 @@ public class Garage {
         cars.clear();
     }
     
-    
+    public void take_out_car(){
+        
+        int occupancy = cars.size();
+        if(this.size <= size*Methods.porcentage(15)){
+            return;
+        }
+        
+        if(occupancy <= size*Methods.porcentage(70)){
+            byte number_of_car = (byte) Aleatory.number(0, 50);
+            if(number_of_car <= 30){
+                return;
+            }
+            Cars carOne = cars.remove(Aleatory.number(0, occupancy));
+            carOne.setTotalTime();
+            
+            return;
+        }
+        
+        Cars carTwo = cars.remove(Aleatory.number(0, occupancy));
+        carTwo.setTotalTime();
+        
+        
+    }
     
     
 }
