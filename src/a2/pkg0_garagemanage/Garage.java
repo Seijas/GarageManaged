@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
  */
 public class Garage {
     ArrayList <Cars> cars = new ArrayList();
+    ArrayList <Ticket> ticket = new ArrayList();
     
     private int size;
     private float rate;

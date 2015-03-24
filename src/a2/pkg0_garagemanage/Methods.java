@@ -129,19 +129,19 @@ public class Methods {
     
     public static boolean isInteger(String number){
 	try {
-		Integer.parseInt(number);
-		return true;
+            Integer.parseInt(number);
+            return true;
 	} catch (NumberFormatException nfe){
-		return false;
+            return false;
 	}
     }
     
     public static boolean isFloat(String number){
 	try {
-		Float.parseFloat(number);
-		return true;
+            Float.parseFloat(number);
+            return true;
 	} catch (NumberFormatException nfe){
-		return false;
+            return false;
 	}
     }
     

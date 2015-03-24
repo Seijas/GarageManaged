@@ -12,6 +12,10 @@ public class Cars {
     double time, total_time;
     float dailyRate;
     
+    /**
+     * Constructor por defecto
+     * default constructor
+     */
     public Cars(){
         String carArray[] = Methods.readCars();
         
@@ -26,6 +30,17 @@ public class Cars {
         
     }
     
+    /**
+     *Constructor con parametros
+     *param constructor
+     * @param matricula tipo string de cada coche
+     * @param color tipo string de cada coche
+     * @param marca tipo string de cada coche
+     * @param modelo tipo string de cada coche
+     * @param tipo tipo string de cada coche
+     * @param ocupCoche tipo string ocupacion max del coche
+     * @param time 
+     */
     public Cars(String matricula, String color, String marca, String modelo, String tipo, int ocupCoche, double time) {
         this.matricula = matricula;
         this.color = color;
@@ -99,6 +114,11 @@ public class Cars {
         return total_time;
     }
     
+    /**
+     * string de parametros del coche por defecto
+     * default string car param
+     * @return
+     */
     @Override
     public String toString() {
         return "Vehículo " + tipo + " con matrícula: " + matricula + ", " + marca + ", " + modelo + " de color: " + color + ", y " + ocupCoche + " ocupantes";
@@ -108,13 +128,28 @@ public class Cars {
         return matricula + "¬" + marca + "¬" + modelo + "¬" + color + "¬" + tipo + "¬" + ocupCoche + "¬" + time;
     }
     
+    /**
+     * string de info de coches que entran al garage
+     * info string entered cars
+     * @return String
+     */
     public String toEntered(){
         return "El vehículo " + tipo + " con matrículla: " + matricula + "\ndesea entrar en el garaje" ;
     }
+    
+    /**
+     * string de informacion completa de cada coche generado
+     * complet info string of generated car
+     * @return String
+     */
     public String toInfo(){
         return marca + " " + modelo + ", " + color + " con " + ocupCoche + " ocupantes \nmatrícula: " + matricula + "\ntipo: " + tipo;
     }
     
+    /**
+     *
+     * @return String con todos los parametros sparados por coma
+     */
     public String toCompare(){
         return matricula + ", " + color + ", " + marca + ", " + modelo + ", " + ocupCoche + ", " + time + ", " + tipo + ", todos";
     }
