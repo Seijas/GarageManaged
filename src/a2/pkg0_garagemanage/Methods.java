@@ -266,7 +266,9 @@ public class Methods {
         return values;
     }
     
-    
+    public static float porcentage(int porcentage){
+        return (float) (porcentage*0.01);
+    }
     
     
     
