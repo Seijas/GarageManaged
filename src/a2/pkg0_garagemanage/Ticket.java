@@ -9,7 +9,7 @@ package a2.pkg0_garagemanage;
 public class Ticket {
     
     Cars vehicle;
-    double paid;
+    float paid;
     float rate;
     double totalTime;
     
@@ -33,8 +33,8 @@ public class Ticket {
         return totalTime;
     }
     
-    public double getPaid(){
-        return totalTime*rate;
+    public float getPaid(){
+        return (float) (totalTime*rate);
     }
     
     @Override
