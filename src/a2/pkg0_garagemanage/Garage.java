@@ -133,8 +133,8 @@ public class Garage {
                         
                         case 1:
                             //rechazar vehiculo
-                            if(cars.size()>(this.size/2)){
-                                JOptionPane.showMessageDialog(null, "El vehiculo se disponia a entrar, pero le deniegas la entrada, \nte mira con cara amenazadora y te pregunta porqué, 'el garage está vacio' afirma");
+                            if(cars.size()<(this.size/2) && 10<Aleatory.number(0, 15)){
+                                JOptionPane.showMessageDialog(null, "El vehiculo se disponia a entrar, pero le deniegas la entrada, \nte mira con cara amenazadora y te pregunta por qué. 'El garage está vacio' afirma");
                                 fail++;
                             }
                             if(canEnter){
@@ -169,7 +169,8 @@ public class Garage {
             }while(((start_time+60) > (System.currentTimeMillis()/1000)) && (brokeTime));
             
             //calculo de beneficios
-            
+            JOptionPane.showMessageDialog(null, "Hoy los vehiculos que han salido del garaje han pagado un total de: " 
+                    + this.recopilateTickets() + "€");
             
             //continuar o salir??
             
@@ -185,26 +186,38 @@ public class Garage {
     public void take_out_car(){
         
         int occupancy = cars.size();
-        if(this.size <= size*Methods.porcentage(15)){
+        if(occupancy <= size*Methods.porcentage(15)){
             return;
         }
         
         if(occupancy <= size*Methods.porcentage(70)){
             byte number_of_car = (byte) Aleatory.number(0, 50);
-            if(number_of_car <= 30){
+            if(number_of_car <= 35){
                 return;
             }
             Cars carOne = cars.remove(Aleatory.number(0, occupancy));
             carOne.setTotalTime();
             
+            ticket.add(new Ticket(carOne));
             return;
         }
         
         Cars carTwo = cars.remove(Aleatory.number(0, occupancy));
         carTwo.setTotalTime();
         
-        
+        ticket.add(new Ticket(carTwo));
     }
+    
+    public float recopilateTickets(){
+        float totalPaied = 0;
+        
+        for(int i=0; i<ticket.size(); i++){
+            totalPaied = totalPaied + ticket.get(i).getPaid();
+        }
+        
+        return totalPaied;
+    }
+    
     
     
 }
