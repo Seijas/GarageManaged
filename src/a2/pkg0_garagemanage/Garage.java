@@ -15,37 +15,78 @@ public class Garage {
     private float rate;
     private int places_available = size-cars.size();
     
+    /**
+     *constructor por defecto
+     *default constructor
+     */
     public Garage(){
         this.size = 100;
         this.rate = (float) 0.75;
     }
+
+    /**
+     *
+     * @param size
+     * @param rate
+     * @param places_available
+     */
     public Garage(int size, float rate, int places_available){
         this.size = size;
         this.rate = rate;
         this.places_available = places_available;
     }
     
+    /**
+     *
+     * @param size
+     */
     public void setSize(int size){
         this.size = size;
     }
+
+    /**
+     *
+     * @param rate
+     */
     public void setRate(float rate){
         this.rate = rate;
     }
+
+    /**
+     *
+     * @param places
+     */
     public void setPlaces(int places){
         this.places_available = places;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getSize(){
         return size;
     }
+
+    /**
+     *
+     * @return
+     */
     public float getRate(){
         return rate;
     }
+
+    /**
+     *
+     * @return
+     */
     public int getPlaces(){
         return places_available;
     }
     
-    
+    /**
+     *
+     */
     public void configuration(){
         
         String[] values;
@@ -80,7 +121,9 @@ public class Garage {
         }
     }
 
-    
+    /**
+     *
+     */
     public void startGame(){
         
         boolean stop = false;
@@ -118,7 +161,7 @@ public class Garage {
                             if(canEnter == false){
                                 fail++;
                             }
-                            if(cars.size()>this.size){
+                            if(cars.size()>=this.size){
                                 JOptionPane.showMessageDialog(null, "El vehículo pasa la barrera, da varias vueltas al garage \ny comprueba que no hay ni una sola plaza "
                                         + "de aparcamiento sin ocupar, \nvuelve hacia su garita y toma represalias contra usted. \nSu jefe tendrá en cuenta este descuido");
                                 fail++;

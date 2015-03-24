@@ -9,6 +9,11 @@ import java.util.Random;
  */
 public class Aleatory {
     
+    /**
+     * Metodo de generacion aleatoria de matriculas de coches
+     * aleatory generation method of enrollments
+     * @return generated enrollment
+     */
     public static String enrollment(){
         Random rnd = new Random();
         
@@ -34,17 +39,36 @@ public class Aleatory {
         return String.valueOf(number) + '-' + one + two + three;
     }
     
+    /**
+     * Metodo de generacion aleatoria de numero entero
+     * aleatory generation method of integer number
+     * @param min rango minimo a introducir
+     * @param max rango maximo a introducir
+     * @return aleatory number entre min y max
+     */
     public static int number(int min, int max){
         Random rnd = new Random();
         return rnd.nextInt(max-min)+min;
     }
     
+    /**
+     * Metodo de generacion aleatorio de colores
+     * aleatory generation method of colors
+     * @param colors lista de colores 
+     * @return aleatory color of the list of colors
+     */
     public static String color(String colors){
         Random rnd = new Random();
         String colorArray[] = colors.split("-");
         return colorArray[rnd.nextInt(colorArray.length)];
     }
     
+    /**
+     *Metodo de generacion aleatoria de un numero de ocupacion de un vehiculo
+     * aleatory generation method of vehicle occupancy 
+     * @param data dato de ocupacion del vehiculo
+     * @return aleatory integer numbre of occupancy
+     */
     public static int vehicle_occupancy(int data){
         Random rnd = new Random();
         return (rnd.nextInt(data)+1);
